@@ -25,7 +25,7 @@ uint8_t buffer[2][512];
 #endif
 
 extern FIL plik;
-extern UINT bytesToRead, bytesRead;
+//extern UINT bytesToRead, bytesRead;
 bool canRead;
 extern uint8_t i;
 

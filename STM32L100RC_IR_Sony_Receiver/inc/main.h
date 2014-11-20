@@ -62,7 +62,7 @@
 /*  DUAL DAC 8-bit right aligned data holding register */
 #define DAC_DHR8RD_Address       0x40007428
 
-//#define SAMPLE_WIDTH_16 1
+#define SAMPLE_WIDTH_16 1
 //#define WAV_FROM_INT_MEMORY 1
 #define SAMPLE_BUFFER_SIZE 512
 
