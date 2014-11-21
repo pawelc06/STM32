@@ -11,10 +11,10 @@
 /****************************/
 #define SD_SPI                           SPI1
 #define SD_SPI_CLK                       RCC_APB2Periph_SPI1
-#define SD_SPI_SCK_PIN                   GPIO_Pin_5                 /* PA.5 */
-#define SD_SPI_SCK_GPIO_PORT             GPIOA                       /* GPIOB */
-#define SD_SPI_SCK_GPIO_CLK              RCC_AHBPeriph_GPIOA
-#define SD_SPI_SCK_SOURCE                GPIO_PinSource5
+#define SD_SPI_SCK_PIN                   GPIO_Pin_3                 /* PA.5 */
+#define SD_SPI_SCK_GPIO_PORT             GPIOB                       /* GPIOB */
+#define SD_SPI_SCK_GPIO_CLK              RCC_AHBPeriph_GPIOB
+#define SD_SPI_SCK_SOURCE                GPIO_PinSource3
 #define SD_SPI_SCK_AF                    GPIO_AF_SPI1
 
 #define SD_SPI_MISO_PIN                  GPIO_Pin_6                 /* PB.14 */

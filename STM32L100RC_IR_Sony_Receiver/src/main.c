@@ -108,10 +108,11 @@ int main(void)
 
 
   	/* tests */
-  	//playWav("m8m.wav"); // fsamp 44100 Hz, 8 bit
-  	//playWav("bj8.wav"); // fsamp 44100 Hz, 8 bit
-  	playWav("im16.wav");  // fsamp 44100 Hz, 16 bit
+  	//playWav("m8m.wav"); // fsamp 22050 Hz, 8 bit
+  	playWav("bj8.wav"); // fsamp 22050 Hz, 8 bit
+  	//playWav("im16.wav");  // fsamp 22050 Hz, 16 bit
   	//playWav("cg10.wav");  // fsamp 22050 Hz, 16 bit
+  //playWav("cg10_8s.wav");  // fsamp 22050 Hz, 8 bit stereo
 
 
 

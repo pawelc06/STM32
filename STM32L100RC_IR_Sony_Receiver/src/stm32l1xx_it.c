@@ -214,18 +214,22 @@ void DMA1_Channel2_IRQHandler(void){
 
 		/**********************************/
 		DMA1_Channel2->CCR = 0x0;
-		    DMA1_Channel2->CNDTR = 0x200;
+		DMA1_Channel2->CNDTR = 0x200;
 
-//#ifdef SAMPLE_WIDTH_16
-		    if(bitsPerSample == 16)
-		    /* 12 bit */
-		    DMA1_Channel2->CPAR = DAC_DHR12R1_Address;
-		    else
-//#else
 
-		    /* 8- bit */
-		    DMA1_Channel2->CPAR = DAC_DHR8R1_Address;
-//#endif
+		    if(bitsPerSample == 16){
+		    	/* 12 bit */
+		    	DMA1_Channel2->CPAR = DAC_DHR12R1_Address;
+		    }
+		    else {
+		    	/* 8- bit */
+		    	if(numChannels == 1){ //mono
+		    		DMA1_Channel2->CPAR = DAC_DHR8R1_Address;
+		    	} else { //stereo
+		    		DMA1_Channel2->CPAR = DAC_DHR8RD_Address;
+		    	}
+		    }
+
 
 		    //i = (i + 1)%2;
 
@@ -253,7 +257,11 @@ void DMA1_Channel2_IRQHandler(void){
 //#else
 		else
 		    /* 8-bit */
-		    DMA1_Channel2->CCR = 0x2093;
+			if(numChannels == 1){
+				DMA1_Channel2->CCR = 0x2093;
+			} else { //stereo 2x8 bits = 16 bits
+				DMA1_Channel2->CCR = 0x2593;
+			}
 //#endif
 		/**********************************/
 
