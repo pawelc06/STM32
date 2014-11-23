@@ -23,5 +23,21 @@ void convertBufferTo12bit(int16_t * buffer);
 void playWav(uint8_t * name);
 void playWavFromMemory(uint8_t * memBuffer);
 void playWavFromIntMemory(const uint8_t * memBuffer);
+void playStereoSine12b();
+void playStereoSaw8b();
+void playStereoWav8b(uint8_t * name);
+
+
+uint32_t DualSine12bit[32];
+
+//#define DAC_DHR12RD_Address      0x40007420
+
+/* Init Structure definition */
+DAC_InitTypeDef            DAC_InitStructure;
+DMA_InitTypeDef            DMA_InitStructure;
+TIM_TimeBaseInitTypeDef    TIM_TimeBaseStructure;
+//uint32_t Idx1 = 0;
 
 #endif /* WAVEPLAYER_H_ */
+
+

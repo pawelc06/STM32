@@ -109,14 +109,19 @@ int main(void)
 
   	/* tests */
   	//playWav("m8m.wav"); // fsamp 22050 Hz, 8 bit
-  	playWav("bj8.wav"); // fsamp 22050 Hz, 8 bit
+  	//playWav("bj8.wav"); // fsamp 22050 Hz, 8 bit mono
   	//playWav("im16.wav");  // fsamp 22050 Hz, 16 bit
   	//playWav("cg10.wav");  // fsamp 22050 Hz, 16 bit
-  //playWav("cg10_8s.wav");  // fsamp 22050 Hz, 8 bit stereo
+  playWav("cg10_8s.wav");  // fsamp 22050 Hz, 8 bit stereo
 
+  //playWav("sine8s.wav");  // fsamp 22050 Hz, 8 bit stereo
+  //playWav("sine8m.wav");  // fsamp 22050 Hz, 8 bit mono
 
+//playStereoSine12b();
+  //playStereoSaw8b();
 
-
+  //playStereoWav8b("cg10_8s.wav");
+  //playStereoWav8b("sine8s.wav");
 
 
 

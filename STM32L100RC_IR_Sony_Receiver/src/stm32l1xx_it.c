@@ -38,6 +38,7 @@ extern uint8_t mode; //0 - normal, 1 - hours, 2 - minutes, 3 seconds
 extern uint16_t ssTogle;
 volatile uint16_t sample;
 volatile uint8_t i;
+volatile uint8_t i2;
 volatile uint8_t * wavPtr;
 volatile uint8_t * wavPtrBegin;
 volatile uint8_t timerproc_counter;
@@ -49,13 +50,17 @@ extern uint8_t bitsPerSample;
 FIL     plik;
 UINT bytesToRead,bytesRead;
 
-extern bool canRead;
+extern volatile bool canRead;
 
 //uint8_t buffer[2][512];
 #ifdef SAMPLE_WIDTH_16
-extern int16_t buffer[2][512];
+	extern int16_t buffer[2][512];
 #else
-extern uint8_t buffer[2][512];
+	#ifdef STEREO
+		extern uint16_t buffer[2][512];
+	#else
+		extern uint8_t buffer[2][512];
+	#endif
 #endif
 
 /** @addtogroup STM32L100C-Discovery_Demo
@@ -216,6 +221,8 @@ void DMA1_Channel2_IRQHandler(void){
 		DMA1_Channel2->CCR = 0x0;
 		DMA1_Channel2->CNDTR = 0x200;
 
+		//DMA1_Channel2->CNDTR = 0x400;
+
 
 		    if(bitsPerSample == 16){
 		    	/* 12 bit */
@@ -225,7 +232,7 @@ void DMA1_Channel2_IRQHandler(void){
 		    	/* 8- bit */
 		    	if(numChannels == 1){ //mono
 		    		DMA1_Channel2->CPAR = DAC_DHR8R1_Address;
-		    	} else { //stereo
+		    	} else { //stereo 8 bit
 		    		DMA1_Channel2->CPAR = DAC_DHR8RD_Address;
 		    	}
 		    }
@@ -272,6 +279,56 @@ void DMA1_Channel2_IRQHandler(void){
 
 
 	}
+}
+
+void DMA1_Channel3_IRQHandler(void){
+
+	if (DMA_GetITStatus(DMA1_IT_TC3) != RESET) {
+
+
+
+
+		DMA_ClearITPendingBit(DMA1_IT_TC3);
+
+
+		//STM_EVAL_LEDToggle(LED5);
+
+
+
+
+
+		/**********************************/
+		DMA1_Channel3->CCR = 0x0;
+
+		/* number of channel data - 512 */
+		DMA1_Channel3->CNDTR = 0x200;
+		//DMA1_Channel3->CNDTR = 0x400;
+
+
+		/* dual 8 bit */
+		DMA1_Channel3->CPAR = DAC_DHR8RD_Address;
+
+
+		i ^= 0x01;
+		DMA1_Channel3->CMAR = (uint32_t)&buffer[i][0];
+
+
+
+
+		    /* 2 x 8 bit stereo */
+		    DMA1_Channel3->CCR = 0x2593;
+
+		/**********************************/
+
+		    DMA1->IFCR = DMA1_IT_TC3;
+
+		    canRead = true;
+
+
+
+	}
+
+
 }
 
 
