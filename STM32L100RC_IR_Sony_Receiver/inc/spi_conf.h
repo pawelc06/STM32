@@ -33,14 +33,16 @@
 #define SD_CS_GPIO_PORT                  GPIOC                       /* GPIOD */
 #define SD_CS_GPIO_CLK                   RCC_AHBPeriph_GPIOC
 
-#define SD_DETECT_PIN                    GPIO_Pin_11                  /* PE.06 */
+/*
+#define SD_DETECT_PIN                    GPIO_Pin_11
 #define SD_DETECT_EXTI_LINE              EXTI_Line6
 #define SD_DETECT_EXTI_PIN_SOURCE        EXTI_PinSource6
 
-#define SD_DETECT_GPIO_PORT              GPIOA                       /* GPIOE */
+#define SD_DETECT_GPIO_PORT              GPIOA
 #define SD_DETECT_GPIO_CLK               RCC_AHBPeriph_GPIOA
 #define SD_DETECT_EXTI_PORT_SOURCE       EXTI_PortSourceGPIOA
 #define SD_DETECT_EXTI_IRQn              EXTI9_5_IRQn
+*/
 /**************************/
 
 

@@ -58,7 +58,16 @@ typedef enum
   LED2 = 1,
   LED3 = 2,
   LED4 = 3,
-  LED5 = 4
+  LED5 = 4,
+  LED6 = 5,
+  B7 = 6,
+  B8 = 7,
+  B9 = 8,
+  B10 = 9,
+  B11 = 10,
+  B12 = 11
+
+
 } Led_TypeDef;
 
 typedef enum 
@@ -83,7 +92,7 @@ typedef enum
 /** @addtogroup STM32L100C_DISCOVERY_LOW_LEVEL_LED
   * @{
   */
-#define LEDn                             5
+#define LEDn                             9
 
 #define LED1_PIN                         GPIO_Pin_1
 #define LED1_GPIO_PORT                   GPIOA
@@ -104,6 +113,22 @@ typedef enum
 #define LED5_PIN                         GPIO_Pin_9
 #define LED5_GPIO_PORT                   GPIOA
 #define LED5_GPIO_CLK                    RCC_AHBPeriph_GPIOA
+
+#define LED6_PIN                         GPIO_Pin_10
+#define LED6_GPIO_PORT                   GPIOA
+#define LED6_GPIO_CLK                    RCC_AHBPeriph_GPIOA
+
+#define B7_PIN                         GPIO_Pin_11
+#define B7_GPIO_PORT                   GPIOA
+#define B7_GPIO_CLK                    RCC_AHBPeriph_GPIOA
+
+#define B8_PIN                         GPIO_Pin_12
+#define B8_GPIO_PORT                   GPIOA
+#define B8_GPIO_CLK                    RCC_AHBPeriph_GPIOA
+
+#define B9_PIN                         GPIO_Pin_13
+#define B9_GPIO_PORT                   GPIOA
+#define B9_GPIO_CLK                    RCC_AHBPeriph_GPIOA
 /**
   * @}
   */ 

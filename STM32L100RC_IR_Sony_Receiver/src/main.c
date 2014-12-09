@@ -71,7 +71,11 @@ int main(void)
   STM_EVAL_LEDInit(LED3);
     STM_EVAL_LEDInit(LED4);
     STM_EVAL_LEDInit(LED5);
-  
+    STM_EVAL_LEDInit(LED6);
+    STM_EVAL_LEDInit(B7);
+    STM_EVAL_LEDInit(B8);
+    STM_EVAL_LEDInit(B9);
+
   /* Initialize User_Button on STM32L100C-Discovery */
   STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_GPIO);
   
@@ -200,8 +204,14 @@ void GPIO_Config(void)
  /*************************************/
  /*!< SD_SPI_CS_GPIO, SD_SPI_MOSI_GPIO, SD_SPI_MISO_GPIO, SD_SPI_DETECT_GPIO
        and SD_SPI_SCK_GPIO Periph clock enable */
-  RCC_AHBPeriphClockCmd(SD_CS_GPIO_CLK | SD_SPI_MOSI_GPIO_CLK | SD_SPI_MISO_GPIO_CLK |
+
+ /*
+ RCC_AHBPeriphClockCmd(SD_CS_GPIO_CLK | SD_SPI_MOSI_GPIO_CLK | SD_SPI_MISO_GPIO_CLK |
                         SD_SPI_SCK_GPIO_CLK | SD_DETECT_GPIO_CLK, ENABLE);
+                        */
+
+ RCC_AHBPeriphClockCmd(SD_CS_GPIO_CLK | SD_SPI_MOSI_GPIO_CLK | SD_SPI_MISO_GPIO_CLK |
+                         SD_SPI_SCK_GPIO_CLK , ENABLE);
 
   /*!< SD_SPI Periph clock enable */
   RCC_APB2PeriphClockCmd(SD_SPI_CLK, ENABLE);
@@ -231,10 +241,12 @@ void GPIO_Config(void)
   GPIO_Init(SD_CS_GPIO_PORT, &GPIO_InitStructure);
 
   /*!< Configure SD_SPI_DETECT_PIN pin: SD Card detect pin */
+  /*
   GPIO_InitStructure.GPIO_Pin = SD_DETECT_PIN;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
   GPIO_Init(SD_DETECT_GPIO_PORT, &GPIO_InitStructure);
+  */
 
   /* Connect PXx to SD_SPI_SCK */
   GPIO_PinAFConfig(SD_SPI_SCK_GPIO_PORT, SD_SPI_SCK_SOURCE, SD_SPI_SCK_AF);

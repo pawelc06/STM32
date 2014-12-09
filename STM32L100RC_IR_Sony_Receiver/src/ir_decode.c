@@ -324,20 +324,49 @@ void IR_Decode(IR_Frame_TypeDef *ir_frame)
     LCDN_WriteXY(IR_devices[ir_frame->Address],0,5);
 #endif
 
-    if(ir_frame->Command == 0)
+    switch(ir_frame->Command){
+    case 0:
     	STM_EVAL_LEDToggle(LED1);
-
-    if(ir_frame->Command == 1)
+    	break;
+    case 1:
     	STM_EVAL_LEDToggle(LED2);
+    	break;
+    case 2:
+    	STM_EVAL_LEDToggle(LED3);
+        	break;
+    case 3:
+    	STM_EVAL_LEDToggle(LED4);
+        	break;
+    case 4:
+    	STM_EVAL_LEDToggle(LED5);
+        	break;
+    case 5:
+    	STM_EVAL_LEDToggle(LED6);
+        	break;
+    case 6:
+    	STM_EVAL_LEDToggle(B7);
+        	break;
+    case 7:
+    	STM_EVAL_LEDToggle(B8);
+        	break;
+    case 8:
+    	STM_EVAL_LEDToggle(B9);
+        	break;
+    case 9:
+        	break;
+    case 10:
+        	break;
+    case 11:
+        	break;
+    case 12:
+        	break;
 
-    if(ir_frame->Command == 2)
-            	STM_EVAL_LEDToggle(LED3);
+    default:
+    	break;
 
-    if(ir_frame->Command == 3)
-        	STM_EVAL_LEDToggle(LED4);
+    }
 
-    if(ir_frame->Command == 4)
-            	STM_EVAL_LEDToggle(LED5);
+
 
 
     ResetMsCounter();

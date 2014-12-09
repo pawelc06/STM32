@@ -626,9 +626,9 @@ if(numChannels == 2 ){
 		if (canRead == true) {
 			if(bitsPerSample == 16){
 
-				STM_EVAL_LEDOn(LED5);
+				//STM_EVAL_LEDOn(LED5);
 				f_read(&plik, &buffer[i ^ 0x01][0], SAMPLE_BUFFER_SIZE * 2,	&bytesRead);
-				STM_EVAL_LEDOff(LED5);
+				//STM_EVAL_LEDOff(LED5);
 				convertBufferTo12bit(&buffer[i ^ 0x01][0]);
 
 				canRead = false;
@@ -639,17 +639,17 @@ if(numChannels == 2 ){
 				if(numChannels == 2 ){
 
 
-					STM_EVAL_LEDOn(LED5);
+					//STM_EVAL_LEDOn(LED5);
 					f_read(&plik, &buffer[i ^ 0x01][0], SAMPLE_BUFFER_SIZE * 2 , &bytesRead);
-					STM_EVAL_LEDOff(LED5);
+					//STM_EVAL_LEDOff(LED5);
 					canRead = false;
 
 					if (bytesRead < SAMPLE_BUFFER_SIZE*2)
 									break;
 				} else {
-					STM_EVAL_LEDOn(LED5);
+					//STM_EVAL_LEDOn(LED5);
 					f_read(&plik, &buffer[i ^ 0x01][0], SAMPLE_BUFFER_SIZE , &bytesRead);
-					STM_EVAL_LEDOff(LED5);
+					//STM_EVAL_LEDOff(LED5);
 					canRead = false;
 
 					if (bytesRead < SAMPLE_BUFFER_SIZE)
