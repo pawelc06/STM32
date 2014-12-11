@@ -315,7 +315,8 @@ void IR_Decode(IR_Frame_TypeDef *ir_frame)
 
 #ifdef USE_LCD 
     LCDN_SetPos(0,3);
-        LCDN_Write_Dec(ct);
+        //LCDN_Write_Dec(ct);
+    LCDN_Write_Dec(ir_frame->Command);
     /* Display command and address */
     //LCD_DisplayStringLine(LCD_LINE_5, IR_Commands[ir_frame->Command]);
     LCDN_WriteXY(IR_Commands[ir_frame->Command],0,4);
@@ -352,11 +353,14 @@ void IR_Decode(IR_Frame_TypeDef *ir_frame)
     case 8:
     	STM_EVAL_LEDToggle(B9);
         	break;
+    case 63:
+    	STM_EVAL_LEDToggle(B10);
+        	break;
     case 9:
+    	STM_EVAL_LEDToggle(B11);
         	break;
-    case 10:
-        	break;
-    case 11:
+    case 118:
+    	STM_EVAL_LEDToggle(B12);
         	break;
     case 12:
         	break;

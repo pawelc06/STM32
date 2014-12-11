@@ -92,7 +92,7 @@ typedef enum
 /** @addtogroup STM32L100C_DISCOVERY_LOW_LEVEL_LED
   * @{
   */
-#define LEDn                             9
+#define LEDn                             12
 
 #define LED1_PIN                         GPIO_Pin_1
 #define LED1_GPIO_PORT                   GPIOA
@@ -129,6 +129,18 @@ typedef enum
 #define B9_PIN                         GPIO_Pin_13
 #define B9_GPIO_PORT                   GPIOA
 #define B9_GPIO_CLK                    RCC_AHBPeriph_GPIOA
+
+#define B10_PIN                         GPIO_Pin_14
+#define B10_GPIO_PORT                   GPIOA
+#define B10_GPIO_CLK                    RCC_AHBPeriph_GPIOA
+
+#define B11_PIN                         GPIO_Pin_15
+#define B11_GPIO_PORT                   GPIOA
+#define B11_GPIO_CLK                    RCC_AHBPeriph_GPIOA
+
+#define B12_PIN                         GPIO_Pin_10
+#define B12_GPIO_PORT                   GPIOC
+#define B12_GPIO_CLK                    RCC_AHBPeriph_GPIOC
 /**
   * @}
   */ 

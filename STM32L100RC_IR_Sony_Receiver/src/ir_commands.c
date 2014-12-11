@@ -167,7 +167,7 @@ const char* IR_Commands[128] = {
         "      Reserved      ",   /* 60 */
         "      Reserved      ",   /* 61 */
         "      Reserved      ",   /* 62 */
-        "      Reserved      ",   /* 63 */
+        "      Teletext      ",   /* 63 */
         " Select Input video1",   /* 64 */
         " Select Input video2",   /* 65 */
         " Select Input video3",   /* 66 */
@@ -222,7 +222,7 @@ const char* IR_Commands[128] = {
         "      Bass Down     ",   /* 115 */
         "      Key Up        ",   /* 116 */
         "     Key Down       ",   /* 117 */
-        "      Reserved      ",   /* 118 */
+        "      Heart         ",   /* 118 */
         "    Slipt Screen    ",   /* 119 */
         "    Add Channel     ",   /* 120 */
         "   Delete Channel   ",   /* 121 */
