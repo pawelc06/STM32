@@ -364,6 +364,12 @@ void IR_Decode(IR_Frame_TypeDef *ir_frame)
         	break;
     case 12:
         	break;
+    case 16:
+    	STM_EVAL_LEDOff(D13);
+    	Delay(300);
+    	STM_EVAL_LEDOn(D13);
+
+    		break;
 
     default:
     	break;

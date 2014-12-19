@@ -65,7 +65,8 @@ typedef enum
   B9 = 8,
   B10 = 9,
   B11 = 10,
-  B12 = 11
+  B12 = 11,
+  D13 = 12
 
 
 } Led_TypeDef;
@@ -92,7 +93,7 @@ typedef enum
 /** @addtogroup STM32L100C_DISCOVERY_LOW_LEVEL_LED
   * @{
   */
-#define LEDn                             12
+#define LEDn                             13
 
 #define LED1_PIN                         GPIO_Pin_1
 #define LED1_GPIO_PORT                   GPIOA
@@ -141,6 +142,11 @@ typedef enum
 #define B12_PIN                         GPIO_Pin_10
 #define B12_GPIO_PORT                   GPIOC
 #define B12_GPIO_CLK                    RCC_AHBPeriph_GPIOC
+
+#define D13_PIN                         GPIO_Pin_11  //controlling ATTiny85/led band
+#define D13_GPIO_PORT                   GPIOC
+#define D13_GPIO_CLK                    RCC_AHBPeriph_GPIOC
+
 /**
   * @}
   */ 

@@ -78,6 +78,9 @@ int main(void)
     STM_EVAL_LEDInit(B10);
     STM_EVAL_LEDInit(B11);
     STM_EVAL_LEDInit(B12);
+    STM_EVAL_LEDInit(D13);
+
+
 
   /* Initialize User_Button on STM32L100C-Discovery */
   STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_GPIO);
