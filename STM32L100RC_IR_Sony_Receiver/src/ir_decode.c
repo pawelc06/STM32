@@ -370,6 +370,20 @@ void IR_Decode(IR_Frame_TypeDef *ir_frame)
     	STM_EVAL_LEDOn(D13);
 
     		break;
+    case 96:
+    	STM_EVAL_LEDToggle(LED1);
+    	STM_EVAL_LEDToggle(LED2);
+    	STM_EVAL_LEDToggle(LED3);
+    	STM_EVAL_LEDToggle(LED4);
+    	STM_EVAL_LEDToggle(LED5);
+    	STM_EVAL_LEDToggle(LED6);
+    	STM_EVAL_LEDToggle(B7);
+    	STM_EVAL_LEDToggle(B8);
+    	STM_EVAL_LEDToggle(B9);
+    	STM_EVAL_LEDToggle(B10);
+    	STM_EVAL_LEDToggle(B11);
+    	STM_EVAL_LEDToggle(B12);
+            	break;
 
     default:
     	break;

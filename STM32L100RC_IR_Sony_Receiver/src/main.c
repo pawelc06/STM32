@@ -32,6 +32,7 @@
 #include "spi_conf.h"
 #include "waveplayer.h"
 #include "rct3.h"
+#include <string.h>
 
 void GPIO_Config(void);
 void SPI_Config(void);
@@ -63,7 +64,14 @@ uint8_t BlinkSpeed = 0;
 int main(void)
 {
   RCC_ClocksTypeDef RCC_Clocks;
-  FRESULT fresult;
+  //FRESULT fresult;
+
+  FRESULT res;
+      FILINFO fno;
+      DIR dir;
+      int i;
+      char *fn;   /* This function assumes non-Unicode configuration */
+      char path[15];
   
   /* Configure LED3 and LED4 on STM32L100C-Discovery */
   STM_EVAL_LEDInit(LED1);
@@ -105,7 +113,7 @@ int main(void)
 
 
 
-  fresult = f_mount(&g_sFatFs, "0:0", 1);
+  	res = f_mount(&g_sFatFs, "0:0", 1);
 
   LCDN_HwConfig();
   LCDN_Init();
@@ -123,6 +131,48 @@ int main(void)
   	//playWav("im16.wav");  // fsamp 22050 Hz, 16 bit
   	//playWav("cg10.wav");  // fsamp 22050 Hz, 16 bit
   //playWav("cg10_8s.wav");  // fsamp 22050 Hz, 8 bit stereo
+
+  /******************************/
+#if _USE_LFN
+    static char lfn[_MAX_LFN + 1];   /* Buffer to store the LFN */
+    fno.lfname = lfn;
+    fno.lfsize = sizeof lfn;
+#endif
+
+
+    res = f_opendir(&dir, "B_one");                       /* Open the directory */
+    if (res == FR_OK) {
+        i = strlen(path);
+        for (;;) {
+            res = f_readdir(&dir, &fno);                   /* Read a directory item */
+            f_chdir("B_one");
+            if (res != FR_OK || fno.fname[0] == 0) break;  /* Break on error or end of dir */
+            if (fno.fname[0] == '.') continue;             /* Ignore dot entry */
+#if _USE_LFN
+            fn = *fno.lfname ? fno.lfname : fno.fname;
+#else
+            fn = fno.fname;
+#endif
+            if (fno.fattrib & AM_DIR) {                    /* It is a directory */
+                //sprintf(&path[i], "/%s", fn);
+                //res = scan_files(path);
+                path[i] = 0;
+                if (res != FR_OK) break;
+            } else {                                       /* It is a file. */
+            	LCDN_WriteXY(fn,1,5);
+            	playWav(fn);
+                //printf("%s/%s\n", path, fn);
+
+            }
+        }
+        f_closedir(&dir);
+    } else {
+    	LCDN_WriteXY("Open dir error",1,5);
+    }
+  /******************************/
+
+
+
   playWav("mo44s.wav");  // fsamp 44100 Hz, 8 bit stereo
   playWav("cg10s44k.wav");  // fsamp 44100 Hz, 8 bit stereo
 
