@@ -36,6 +36,7 @@
 #include "../FatFs_0.10/src/ff.h"
 #include "ir_decode.h"
 #include "lcd_pcd8544_lib.h"
+#include <stdint.h>
 
 #define USE_PETIT_FAT 0
 
